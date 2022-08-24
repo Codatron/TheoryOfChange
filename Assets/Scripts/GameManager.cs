@@ -11,13 +11,10 @@ public class GameManager : MonoBehaviour
     private int itemsDonated;
     [SerializeField] int randomSpawnPoint;
 
-
     // ToDo
-    // - animate flowers
-    // - time delay for new item to appear
     // - audio
-    // - make items float/hover in the air
     // - particle effects
+    // - add in broken stuff
 
     private void OnEnable()
     {
@@ -35,17 +32,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SpawnItem();
+        StartCoroutine(nameof(SpawnDelay));
         itemsDonated = 0;
     }
 
-    void SpawnItem()
+    IEnumerator SpawnDelay()
     {
+        yield return new WaitForSeconds(0.667f);
+
         var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.25f);
         var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.5f, 3.25f);
 
         randomSpawnPoint = Random.Range(0, 2);
-        
+
         if (randomSpawnPoint == 0)
         {
             var itemClone = Instantiate(itemPrefab, spawnPointLeft, Quaternion.identity);
@@ -56,17 +55,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void SpawnItem()
+    {
+        StartCoroutine(nameof(SpawnDelay));
+    }
+
     private void SpawnFlower()
     {
         for (int i = 0; i < itemsDonated; i++)
         {
-            var spawnPosition = RandomSpawnPosition(-8.0f, 8.0f, 0.85f, -4.0f);
+            var spawnPosition = RandomSpawnPosition(-8.5f, 8.5f, 0.85f, -4.0f);
             bool canSpawnHere = true;
             var tries = 0;
 
             do
             {
-                spawnPosition = RandomSpawnPosition(-8.0f, 8.0f, 0.85f, -4.0f);
+                spawnPosition = RandomSpawnPosition(-8.5f, 8.5f, 0.85f, -4.0f);
 
                 //canSpawnHere = true;
 
@@ -98,6 +102,13 @@ public class GameManager : MonoBehaviour
 
     void AddItemsDonated()
     {
-        itemsDonated++;
+        if (itemsDonated > 0)
+        {
+            itemsDonated *= 2;
+        }
+        else
+        {
+            itemsDonated++;
+        }
     }
 }

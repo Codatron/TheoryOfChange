@@ -10,11 +10,11 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float timer;
     [SerializeField]
-    private float frequency = 2.0f;
+    private float frequency;
     [SerializeField]
     private float amplitude = 0.75f;
     [SerializeField]
-    private float speed = 3.0f;
+    private float speed;
 
     private Item itemRef;
     private bool hasSpawnedOnLeft;
@@ -36,7 +36,16 @@ public class Movement : MonoBehaviour
         else if (transform.position.x == 9.0f)
         {
             hasSpawnedOnLeft = false;
-        }   
+        }
+
+        float randomFrequency = Random.Range(1.0f, 3.0f);
+        frequency = randomFrequency;
+
+        float randomSpeed = Random.Range(2.25f, 3.25f);
+        speed = randomSpeed;
+
+        float randomAmplitude = Random.Range(0.70f, 0.85f);
+        amplitude = randomAmplitude;
     }
 
     void Update()
