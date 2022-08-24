@@ -13,7 +13,7 @@ public class CollectItem : MonoBehaviour
         if (other.CompareTag("Item"))
         {
             Destroy(other.gameObject);
-            onItemDonated?.Invoke();
+            onItemDonated?.Invoke(); // Called in GameManager
         }
     }
 }

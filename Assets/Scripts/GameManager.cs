@@ -2,15 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public delegate void OnChangeGameState();
+
+public enum GameState
+{
+    GameOn,
+    GamePause
+}
+
 public class GameManager : MonoBehaviour
 {
     public GameObject itemPrefab;
     public GameObject flowerPrefab;
     public Collider2D donationBox;
+    public static OnChangeGameState onChangeGameState;
 
     private int itemsDonated;
+    private int itemsMultiplier;
     [SerializeField] int randomSpawnPoint;
 
+    public GameState gameState;
+
+    private float timer = 0;
     // ToDo
     // - audio
     // - particle effects
@@ -21,6 +35,8 @@ public class GameManager : MonoBehaviour
         CollectItem.onItemDonated += AddItemsDonated;
         CollectItem.onItemDonated += SpawnItem;
         CollectItem.onItemDonated += SpawnFlower;
+        Item.onSuicide += SpawnItem;
+        UiManager.onStartScreenTextComplete += StartGame;
     }
 
     private void OnDisable()
@@ -28,30 +44,36 @@ public class GameManager : MonoBehaviour
         CollectItem.onItemDonated -= AddItemsDonated;
         CollectItem.onItemDonated -= SpawnItem;
         CollectItem.onItemDonated -= SpawnFlower;
+        Item.onSuicide -= SpawnItem;
+        UiManager.onStartScreenTextComplete -= StartGame;
     }
 
     void Start()
     {
-        StartCoroutine(nameof(SpawnDelay));
+        gameState = GameState.GamePause;
         itemsDonated = 0;
+        itemsMultiplier = 0;
     }
 
     IEnumerator SpawnDelay()
     {
         yield return new WaitForSeconds(0.667f);
 
-        var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.25f);
-        var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.5f, 3.25f);
-
-        randomSpawnPoint = Random.Range(0, 2);
-
-        if (randomSpawnPoint == 0)
+        if (gameState != GameState.GamePause)
         {
-            var itemClone = Instantiate(itemPrefab, spawnPointLeft, Quaternion.identity);
-        }
-        else if (randomSpawnPoint == 1)
-        {
-            var itemClone = Instantiate(itemPrefab, spawnPointRight, Quaternion.identity);
+            var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.15f);
+            var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.5f, 3.15f);
+
+            randomSpawnPoint = Random.Range(0, 2);
+
+            if (randomSpawnPoint == 0)
+            {
+                var itemClone = Instantiate(itemPrefab, spawnPointLeft, Quaternion.identity);
+            }
+            else if (randomSpawnPoint == 1)
+            {
+                var itemClone = Instantiate(itemPrefab, spawnPointRight, Quaternion.identity);
+            }
         }
     }
 
@@ -62,7 +84,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnFlower()
     {
-        for (int i = 0; i < itemsDonated; i++)
+        for (int i = 0; i < itemsMultiplier; i++)
         {
             var spawnPosition = RandomSpawnPosition(-8.5f, 8.5f, 0.85f, -4.0f);
             bool canSpawnHere = true;
@@ -100,15 +122,35 @@ public class GameManager : MonoBehaviour
         return new Vector3(randomPositionX, randomPositionY, 0.0f);
     }
 
+    public int GetItemsDonated()
+    {
+        return itemsDonated;
+    }
+
     void AddItemsDonated()
     {
-        if (itemsDonated > 0)
+        if (itemsMultiplier > 0)
         {
-            itemsDonated *= 2;
+            itemsMultiplier *= 2;
+            itemsMultiplier++;
         }
         else
         {
-            itemsDonated++;
+            itemsMultiplier++;
         }
+
+        itemsDonated++;
+
+        if (itemsDonated == 10)
+        {
+            gameState = GameState.GamePause;
+            onChangeGameState?.Invoke(); // Called in UiManager
+        }
+    }
+
+    void StartGame()
+    {
+        gameState = GameState.GameOn;
+        StartCoroutine(nameof(SpawnDelay));
     }
 }

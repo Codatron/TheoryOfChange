@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void OnSuicide();
+
 public class Item : MonoBehaviour
 {
+    public static OnSuicide onSuicide;
     public bool isGrabbed = false;
     public Sprite[] clothingItems;
 
@@ -26,6 +29,12 @@ public class Item : MonoBehaviour
     {
         if (!isGrabbed)
             return;
+
+        if (transform.position.x < -10.0f || transform.position.x > 10.0f)
+        {
+            Destroy(gameObject);
+            onSuicide?.Invoke(); // Called in GameManager
+        }
     }
 
     public Vector3 MouseWorldPosition()
