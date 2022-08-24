@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     // - audio
     // - particle effects
     // - add in broken stuff
+    // - adjust collision boxes on sprites
 
     private void OnEnable()
     {

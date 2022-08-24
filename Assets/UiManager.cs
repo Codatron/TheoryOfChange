@@ -22,7 +22,7 @@ public class UiManager : MonoBehaviour
     private string startTextString1 = "Click and drag the items into the donation box...";
     private string startTextString2 = "...and see the changes your contributions can make!";
 
-    private string endTextString1 = "Wow! Your donations have really made a change";
+    private string endTextString1 = "Wow! Your donations have really made a difference";
     private string endTextString2 = "Thank you!";
 
     private void OnEnable()
