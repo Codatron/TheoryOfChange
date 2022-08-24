@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 463517a41831c294ab169da7984e3107
+guid: 02cf89359f0bfa44a8cfc008b375d1a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8755262442145343657
-    second: orange_flower_0
+      213: -7266786726723157192
+    second: sandles_0
+  - first:
+      213: -577813035412692928
+    second: sandles_1
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -44,13 +47,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 140
+  spriteBorder: {x: 30, y: 50, z: 28, w: 57}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -107,22 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: orange_flower_0
+      name: sandles_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
+        x: 30
+        y: 51
+        width: 138
         height: 290
-      alignment: 9
-      pivot: {x: 0.5, y: 0.025}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7579b9c323f0f7680800000000000000
-      internalID: -8755262442145343657
+      spriteID: 833842f19ff272b90800000000000000
+      internalID: -7266786726723157192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandles_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 51
+        width: 138
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040e2ad0b123bf7f0800000000000000
+      internalID: -577813035412692928
       vertices: []
       indices: 
       edges: []

@@ -5,22 +5,21 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public bool isGrabbed = false;
+    public Sprite[] clothingItems;
 
     private new Camera camera;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRend;
 
     private void Awake()
     {
         camera = Camera.main;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
-        //var randomXPosition = Random.Range(-2.0f, 2.0f);
-        //var randomYPosition = Random.Range(0.75f, 1.80f);
-        //var randomStartPosition = new Vector3(randomXPosition, randomYPosition, 0.0f);
-        //transform.position = randomStartPosition;
+        int randomItem = Random.Range(0, clothingItems.Length);
+        spriteRend.sprite = clothingItems[randomItem];
     }
 
     void Update()
@@ -41,7 +40,7 @@ public class Item : MonoBehaviour
         isGrabbed = true;
 
         Vector3 offset = transform.position - MouseWorldPosition();
-        spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        spriteRend.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
     }
 
     private void OnMouseDrag()
@@ -53,6 +52,6 @@ public class Item : MonoBehaviour
     private void OnMouseUp()
     {
         isGrabbed = false;
-        spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        spriteRend.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }

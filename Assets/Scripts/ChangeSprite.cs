@@ -22,20 +22,41 @@ public class ChangeSprite : MonoBehaviour
     {
         int randomIndex = Random.Range(0, sprites.Length);
         spriteRend.sprite = sprites[randomIndex];
+        spriteRend.sortingOrder = -5;
 
-        //int randomOrder = Random.Range(-2, -15);
-        //spriteRend.sortingOrder = randomOrder;
+        if (transform.position.y > 0.0f)
+        {
+            transform.localScale = ChangeScale(0.40f, 0.40f, 0.0f);
+        }
+        else if (transform.position.y > -1.0f)
+        {
+            transform.localScale = ChangeScale(0.55f, 0.55f, 0.0f);
+        }
+        else if (transform.position.y > -2.0f)
+        {
+            transform.localScale = ChangeScale(0.65f, 0.65f, 0.0f);
+        }
+        else if (transform.position.y > -3.0f)
+        {
+            transform.localScale = ChangeScale(0.70f, 0.70f, 0.0f);
 
-        //transform.localScale /= randomOrder * -1;
+            spriteRend.sortingOrder = -2;
+        }
+        else if (transform.position.y > -4.0f)
+        {
+            transform.localScale = ChangeScale(0.85f, 0.850f, 0.0f);
 
-        //if (transform.position.y > -4.0f && transform.position.y < -2.0f)
-        //{
-        //    spriteRend.sortingOrder = -3;
-        //}
-        //else if (transform.position.y > -1.9f && transform.position.y < -0.0f)
-        //{
-        //    spriteRend.sortingOrder = -5;
-        //}
+            spriteRend.sortingOrder = -1;
+        }
+        else if (transform.position.y > -5.0f)
+        {
+            spriteRend.sortingOrder = 0;
+        }
+    }
 
+    Vector3 ChangeScale(float x, float y, float z)
+    {
+        var scaleChange = new Vector3(x, y, z);
+        return scaleChange;
     }
 }

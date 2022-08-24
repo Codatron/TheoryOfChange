@@ -6,25 +6,18 @@ public class GameManager : MonoBehaviour
 {
     public GameObject itemPrefab;
     public GameObject flowerPrefab;
-    public LayerMask filterMask;
-    public Collider2D[] colliders;
-    public float radius = 3.0f;
-    
+    public Collider2D donationBox;
+
     private int itemsDonated;
+    [SerializeField] int randomSpawnPoint;
 
 
     // ToDo
-    // - Do not spawn objects on donation box
     // - animate flowers
     // - time delay for new item to appear
     // - audio
-    // - import new flowers that are the same size
     // - make items float/hover in the air
     // - particle effects
-
-    private void Awake()
-    {
-    }
 
     private void OnEnable()
     {
@@ -40,30 +33,58 @@ public class GameManager : MonoBehaviour
         CollectItem.onItemDonated -= SpawnFlower;
     }
 
-    private void Start()
+    void Start()
     {
         SpawnItem();
         itemsDonated = 0;
     }
 
-    private void Update()
-    {
-        colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-    }
-
     void SpawnItem()
     {
-        var itemClone = Instantiate(itemPrefab, RandomSpawnPosition(-4.0f, 4.0f, 1.5f, 4.0f), Quaternion.identity);
+        var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.25f);
+        var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.5f, 3.25f);
+
+        randomSpawnPoint = Random.Range(0, 2);
+        
+        if (randomSpawnPoint == 0)
+        {
+            var itemClone = Instantiate(itemPrefab, spawnPointLeft, Quaternion.identity);
+        }
+        else if (randomSpawnPoint == 1)
+        {
+            var itemClone = Instantiate(itemPrefab, spawnPointRight, Quaternion.identity);
+        }
     }
 
     private void SpawnFlower()
     {
         for (int i = 0; i < itemsDonated; i++)
         {
-            if (colliders != null)
+            var spawnPosition = RandomSpawnPosition(-8.0f, 8.0f, 0.85f, -4.0f);
+            bool canSpawnHere = true;
+            var tries = 0;
+
+            do
             {
-                var flowerClone = Instantiate(flowerPrefab, RandomSpawnPosition(-4.0f, 4.0f, 0.85f, -4.0f), Quaternion.identity);
+                spawnPosition = RandomSpawnPosition(-8.0f, 8.0f, 0.85f, -4.0f);
+
+                //canSpawnHere = true;
+
+                if (donationBox.bounds.Contains(spawnPosition))
+                {
+                    canSpawnHere = false;
+                }
+
+                tries++;
+
+                if (tries > 50)
+                {
+                    break;
+                }
             }
+            while (!canSpawnHere);
+
+            var flowerClone = Instantiate(flowerPrefab, spawnPosition, Quaternion.identity);
         }
     }
 

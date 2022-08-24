@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 463517a41831c294ab169da7984e3107
+guid: efabaed612a719045893d5237c2058d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8755262442145343657
-    second: orange_flower_0
+      213: 1372056328360121612
+    second: tshirt_4
+  - first:
+      213: 7199192528232364750
+    second: tshirt_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -107,22 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: orange_flower_0
+      name: tshirt_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 290
-      alignment: 9
-      pivot: {x: 0.5, y: 0.025}
+        x: 65
+        y: 105
+        width: 270
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7579b9c323f0f7680800000000000000
-      internalID: -8755262442145343657
+      spriteID: c055bbf06f58a0310800000000000000
+      internalID: 1372056328360121612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tshirt_6
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 100
+        width: 136
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecabfe2267ba8e360800000000000000
+      internalID: 7199192528232364750
       vertices: []
       indices: 
       edges: []
