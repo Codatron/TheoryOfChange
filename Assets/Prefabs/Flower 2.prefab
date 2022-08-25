@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2537113613883468588}
   - component: {fileID: 8697547011568954709}
   m_Layer: 0
-  m_Name: Flower
+  m_Name: Flower 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -8755262442145343657, guid: 463517a41831c294ab169da7984e3107, type: 3}
+  m_Sprite: {fileID: 4441751315175401939, guid: 12a5452ca5aa4944da72121f969a9a98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ Animator:
   m_GameObject: {fileID: 3169359788364355400}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c453cdf517e57824d8f4b5decf72e4ee, type: 2}
+  m_Controller: {fileID: 9100000, guid: 864e28db62310e841b65dae6c513af75, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ChangeSprite : MonoBehaviour
 {
-    public Sprite[] sprites;
-    
+    //public Sprite[] sprites;
+    //public GameObject[] flowers;
+
     private SpriteRenderer spriteRend;
+ 
 
     void Awake()
     {
@@ -20,8 +22,11 @@ public class ChangeSprite : MonoBehaviour
 
     void InitSprite()
     {
-        int randomIndex = Random.Range(0, sprites.Length);
-        spriteRend.sprite = sprites[randomIndex];
+        //int randomIndex = Random.Range(0, sprites.Length);
+        //spriteRend.sprite = sprites[randomIndex];
+
+        //int randomIndex = Random.Range(0, flowers.Length);
+        //spriteRend.sprite = sprites[randomIndex];
         spriteRend.sortingOrder = -5;
 
         if (transform.position.y > 0.0f)

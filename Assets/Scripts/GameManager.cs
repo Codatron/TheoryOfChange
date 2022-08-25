@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject itemPrefab;
     public GameObject flowerPrefab;
+    public GameObject[] flowerPrefabs;
     public Collider2D donationBox;
     public static OnChangeGameState onChangeGameState;
 
@@ -28,7 +29,6 @@ public class GameManager : MonoBehaviour
     // ToDo
     // - audio
     // - particle effects
-    // - add in broken stuff
     // - adjust collision boxes on sprites
 
     private void OnEnable()
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         CollectItem.onItemDonated += AddItemsDonated;
         CollectItem.onItemDonated += SpawnItem;
         CollectItem.onItemDonated += SpawnFlower;
-        Item.onSuicide += SpawnItem;
+        Boundary.onItemDestroyed += SpawnItem;
         UiManager.onStartScreenTextComplete += StartGame;
     }
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         CollectItem.onItemDonated -= AddItemsDonated;
         CollectItem.onItemDonated -= SpawnItem;
         CollectItem.onItemDonated -= SpawnFlower;
-        Item.onSuicide -= SpawnItem;
+        Boundary.onItemDestroyed -= SpawnItem;
         UiManager.onStartScreenTextComplete -= StartGame;
     }
 
@@ -111,7 +111,8 @@ public class GameManager : MonoBehaviour
             }
             while (!canSpawnHere);
 
-            var flowerClone = Instantiate(flowerPrefab, spawnPosition, Quaternion.identity);
+            int randomFlower = Random.Range(0, flowerPrefabs.Length);
+            var flowerClone = Instantiate(flowerPrefabs[randomFlower], spawnPosition, Quaternion.identity);
         }
     }
 

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void OnItemDonated();
+public delegate void OnItemDestroyed();
 
-public class CollectItem : MonoBehaviour
+public class Boundary : MonoBehaviour
 {
-    public static OnItemDonated onItemDonated;
+    public static OnItemDestroyed onItemDestroyed;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Item"))
         {
             Destroy(other.gameObject);
-            onItemDonated?.Invoke(); // Called in GameManager
+            onItemDestroyed?.Invoke(); // Called in GameManager
         }
     }
 }
