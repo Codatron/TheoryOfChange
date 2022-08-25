@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
         float randomSpeed = Random.Range(2.25f, 3.25f);
         speed = randomSpeed;
 
-        float randomAmplitude = Random.Range(0.70f, 0.85f);
+        float randomAmplitude = Random.Range(0.65f, 0.75f);
         amplitude = randomAmplitude;
     }
 

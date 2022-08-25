@@ -12,6 +12,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3380267736634916352, guid: a858197aafa9c7043b698712d60665c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380267736634916352, guid: a858197aafa9c7043b698712d60665c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.4
       objectReference: {fileID: 0}
@@ -58,6 +62,10 @@ PrefabInstance:
     - target: {fileID: 3380267736634916354, guid: a858197aafa9c7043b698712d60665c4, type: 3}
       propertyPath: m_Size.y
       value: 2.2878568
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380267736634916354, guid: a858197aafa9c7043b698712d60665c4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3380267736634916354, guid: a858197aafa9c7043b698712d60665c4, type: 3}
       propertyPath: m_Offset.x
@@ -117,7 +125,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442937378881064637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -136,6 +144,96 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.59656405, y: 0.8986516}
   m_EdgeRadius: 0
+--- !u!60 &6190480181469860764
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442937378881064637}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.05, y: 2.425}
+    newSize: {x: 3.05, y: 2.425}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.2166667, y: -1.0125}
+      - {x: 1.3083334, y: -0.97083336}
+      - {x: 1.5000001, y: -1.0375}
+      - {x: 1.5250001, y: -1.0375}
+      - {x: 1.5250001, y: -0.9958334}
+      - {x: 1.4666667, y: -0.9125}
+      - {x: 1.3750001, y: -0.8541667}
+      - {x: 1.0833334, y: -0.7041667}
+      - {x: 0.8833334, y: -0.5541667}
+      - {x: 0.7083334, y: -0.3791667}
+      - {x: 0.55833334, y: -0.12916668}
+      - {x: 0.5166667, y: -0.012500001}
+      - {x: 0.4416667, y: 0.112500004}
+      - {x: 0.38333336, y: 0.18750001}
+      - {x: 0.17500001, y: 0.38750002}
+      - {x: 0.17500001, y: 0.5208334}
+      - {x: 0.21666668, y: 0.62083334}
+      - {x: 0.35000002, y: 0.7458334}
+      - {x: 0.37500003, y: 0.8208334}
+      - {x: 0.40833336, y: 0.9458334}
+      - {x: 0.45000002, y: 1.0541667}
+      - {x: 0.4416667, y: 1.1625}
+      - {x: 0.40833336, y: 1.2125001}
+      - {x: 0.3, y: 1.2125001}
+      - {x: 0.2916667, y: 1.2041668}
+      - {x: 0.25, y: 1.0041667}
+      - {x: 0.17500001, y: 1.0041667}
+      - {x: 0.10833334, y: 0.97916675}
+      - {x: 0.008333334, y: 0.9125}
+      - {x: -0.16666667, y: 1.0041667}
+      - {x: -0.275, y: 1.0708334}
+      - {x: -0.2916667, y: 1.2041668}
+      - {x: -0.3, y: 1.2125001}
+      - {x: -0.37500003, y: 1.2125001}
+      - {x: -0.40833336, y: 1.2041668}
+      - {x: -0.45000002, y: 1.1708333}
+      - {x: -0.4416667, y: 0.9958334}
+      - {x: -0.38333336, y: 0.9208334}
+      - {x: -0.37500003, y: 0.79583335}
+      - {x: -0.3416667, y: 0.7375}
+      - {x: -0.20833334, y: 0.6125}
+      - {x: -0.16666667, y: 0.42916667}
+      - {x: -0.25, y: 0.32083336}
+      - {x: -0.37500003, y: 0.18750001}
+      - {x: -0.48333335, y: 0.05416667}
+      - {x: -0.52500004, y: -0.0625}
+      - {x: -0.62500006, y: -0.23750001}
+      - {x: -0.7083334, y: -0.3625}
+      - {x: -0.8166667, y: -0.49583337}
+      - {x: -1, y: -0.63750005}
+      - {x: -1.1750001, y: -0.76250005}
+      - {x: -1.475, y: -0.9125}
+      - {x: -1.5166668, y: -0.97916675}
+      - {x: -1.5250001, y: -1.0208334}
+      - {x: -1.5000001, y: -1.0375}
+      - {x: -1.4000001, y: -0.97083336}
+      - {x: -1.3000001, y: -0.97916675}
+      - {x: -1.1166667, y: -1.0541667}
+      - {x: -0.6916667, y: -1.1625}
+      - {x: -0.6, y: -1.1791667}
+      - {x: -0.43333337, y: -1.2041668}
+      - {x: -0.36666667, y: -1.2125001}
+      - {x: 0.37500003, y: -1.2125001}
+      - {x: 0.6666667, y: -1.1791667}
+      - {x: 0.8166667, y: -1.1458334}
 --- !u!61 &8860432657096776951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +241,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4442937378881064637}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

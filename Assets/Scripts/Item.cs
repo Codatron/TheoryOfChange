@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
         isGrabbed = true;
 
         Vector3 offset = transform.position - MouseWorldPosition();
-        spriteRend.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        spriteRend.color = new Color(0.75f, 0.25f, 0.25f, 1.0f);
     }
 
     private void OnMouseDrag()

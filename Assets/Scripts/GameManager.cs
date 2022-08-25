@@ -22,16 +22,11 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip finalCheerClip;
     public AudioClip flowerPop;
-
-    private int itemsDonated;
-    private int itemsMultiplier;
-    [SerializeField] int randomSpawnPoint;
-
     public GameState gameState;
 
-    // ToDo
-
-    // - adjust collision boxes on sprites
+    [SerializeField] private int itemsDonated;
+    private int itemsMultiplier;
+    [SerializeField] int randomSpawnPoint;
 
     private void OnEnable()
     {
@@ -66,9 +61,8 @@ public class GameManager : MonoBehaviour
         
         if (gameState != GameState.GamePause)
         {
-            var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.15f);
-            var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.5f, 3.15f);
-
+            var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.75f, 3.10f);
+            var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.75f, 3.10f);
             randomSpawnPoint = Random.Range(0, 2);
 
             int randomItem = Random.Range(0, itemPrefabs.Length);
@@ -82,6 +76,8 @@ public class GameManager : MonoBehaviour
                 var itemClone = Instantiate(itemPrefabs[randomItem], spawnPointRight, Quaternion.identity);
             }
         }
+
+        yield return null;
     }
 
     void SpawnItem()
@@ -93,13 +89,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < itemsMultiplier; i++)
         {
-            var spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.85f, -6.5f);
+            var spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.95f, -6.35f);
             bool canSpawnHere = true;
             var tries = 0;
 
             do
             {
-                spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.85f, -6.5f);
+                spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.95f, -6.35f);
 
                 //canSpawnHere = true;
 
@@ -120,10 +116,11 @@ public class GameManager : MonoBehaviour
             int randomFlower = Random.Range(0, flowerPrefabs.Length);
             var flowerClone = Instantiate(flowerPrefabs[randomFlower], spawnPosition, Quaternion.identity);
 
-            float randomPitch = Random.Range(0.7f, 1.0f);
-            audioSource.pitch = randomPitch;
-            audioSource.PlayOneShot(flowerPop);
         }
+
+        float randomPitch = Random.Range(0.7f, 1.0f);
+        audioSource.pitch = randomPitch;
+        audioSource.PlayOneShot(flowerPop);
     }
 
     private Vector3 RandomSpawnPosition(float xPosMin, float xPosMax, float yPosmin, float yPosMax)
