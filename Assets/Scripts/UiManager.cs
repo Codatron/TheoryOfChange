@@ -39,7 +39,7 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        DisplayStartText();
+        //DisplayStartText();
     }
 
     IEnumerator FadeInText()
@@ -95,11 +95,12 @@ public class UiManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.667f);
 
-        HideStartText();
+        //HideStartText();
 
         if (gameManagerRef.GetItemsDonated() < 10)
         {
-            onStartScreenTextComplete?.Invoke(); // Called in GameManager
+            // Called in GameManager
+            //onStartScreenTextComplete?.Invoke(); 
         }
         else 
         {

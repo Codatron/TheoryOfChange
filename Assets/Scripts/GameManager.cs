@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] flowerPrefabs;
     public Collider2D donationBox;
     public static OnChangeGameState onChangeGameState;
+    public AudioSource audioSource;
+    public AudioClip finalCheerClip;
+    public AudioClip flowerPop;
 
     private int itemsDonated;
     private int itemsMultiplier;
@@ -25,10 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState;
 
-    private float timer = 0;
     // ToDo
-    // - audio
-    // - particle effects
+
     // - adjust collision boxes on sprites
 
     private void OnEnable()
@@ -51,7 +52,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameState = GameState.GamePause;
+        //gameState = GameState.GamePause;
+        SpawnItem();
         itemsDonated = 0;
         itemsMultiplier = 0;
     }
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.667f);
 
+        
         if (gameState != GameState.GamePause)
         {
             var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.5f, 3.15f);
@@ -87,13 +90,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < itemsMultiplier; i++)
         {
-            var spawnPosition = RandomSpawnPosition(-8.5f, 8.5f, 0.85f, -4.0f);
+            var spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.85f, -6.5f);
             bool canSpawnHere = true;
             var tries = 0;
 
             do
             {
-                spawnPosition = RandomSpawnPosition(-8.5f, 8.5f, 0.85f, -4.0f);
+                spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.85f, -6.5f);
 
                 //canSpawnHere = true;
 
@@ -113,6 +116,10 @@ public class GameManager : MonoBehaviour
 
             int randomFlower = Random.Range(0, flowerPrefabs.Length);
             var flowerClone = Instantiate(flowerPrefabs[randomFlower], spawnPosition, Quaternion.identity);
+
+            float randomPitch = Random.Range(0.7f, 1.0f);
+            audioSource.pitch = randomPitch;
+            audioSource.PlayOneShot(flowerPop);
         }
     }
 
@@ -147,6 +154,7 @@ public class GameManager : MonoBehaviour
         {
             gameState = GameState.GamePause;
             onChangeGameState?.Invoke(); // Called in UiManager
+            audioSource.PlayOneShot(finalCheerClip);
         }
     }
 

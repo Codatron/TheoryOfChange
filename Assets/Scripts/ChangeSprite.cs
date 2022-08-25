@@ -8,7 +8,6 @@ public class ChangeSprite : MonoBehaviour
     //public GameObject[] flowers;
 
     private SpriteRenderer spriteRend;
- 
 
     void Awake()
     {
@@ -56,6 +55,10 @@ public class ChangeSprite : MonoBehaviour
         else if (transform.position.y > -5.0f)
         {
             spriteRend.sortingOrder = 0;
+        }
+        else if (transform.position.y > -7.0f)
+        {
+            spriteRend.sortingOrder = 1;
         }
     }
 

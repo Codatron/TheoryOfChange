@@ -9,11 +9,13 @@ public class Item : MonoBehaviour
 
     private new Camera camera;
     private SpriteRenderer spriteRend;
+    
 
     private void Awake()
     {
         camera = Camera.main;
         spriteRend = GetComponent<SpriteRenderer>();
+        
     }
 
     void Start()
