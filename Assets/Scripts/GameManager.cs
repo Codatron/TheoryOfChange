@@ -13,7 +13,8 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject itemPrefab;
+    //public GameObject itemPrefab;
+    public GameObject[] itemPrefabs;
     public GameObject flowerPrefab;
     public GameObject[] flowerPrefabs;
     public Collider2D donationBox;
@@ -70,13 +71,15 @@ public class GameManager : MonoBehaviour
 
             randomSpawnPoint = Random.Range(0, 2);
 
+            int randomItem = Random.Range(0, itemPrefabs.Length);
+
             if (randomSpawnPoint == 0)
             {
-                var itemClone = Instantiate(itemPrefab, spawnPointLeft, Quaternion.identity);
+                var itemClone = Instantiate(itemPrefabs[randomItem], spawnPointLeft, Quaternion.identity);
             }
             else if (randomSpawnPoint == 1)
             {
-                var itemClone = Instantiate(itemPrefab, spawnPointRight, Quaternion.identity);
+                var itemClone = Instantiate(itemPrefabs[randomItem], spawnPointRight, Quaternion.identity);
             }
         }
     }

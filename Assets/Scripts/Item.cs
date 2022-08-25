@@ -20,8 +20,8 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        int randomItem = Random.Range(0, clothingItems.Length);
-        spriteRend.sprite = clothingItems[randomItem];
+        //int randomItem = Random.Range(0, clothingItems.Length);
+        //spriteRend.sprite = clothingItems[randomItem];
     }
 
     void Update()
