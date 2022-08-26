@@ -47,7 +47,7 @@ public class UiManager : MonoBehaviour
         float duration = 1.0f;
         float timer = 0.0f;
 
-        if (gameManagerRef.GetItemsDonated() < 10)
+        if (gameManagerRef.GetItemsDonated() < gameManagerRef.donationLimit)
         {
             startText.GetComponent<TMP_Text>().text = startTextString1;
         }
@@ -72,7 +72,7 @@ public class UiManager : MonoBehaviour
 
         timer = 0.0f;
 
-        if (gameManagerRef.GetItemsDonated() < 10)
+        if (gameManagerRef.GetItemsDonated() < gameManagerRef.donationLimit)
         {
             startText.GetComponent<TMP_Text>().text = startTextString2;
         }
@@ -97,7 +97,7 @@ public class UiManager : MonoBehaviour
 
         //HideStartText();
 
-        if (gameManagerRef.GetItemsDonated() < 10)
+        if (gameManagerRef.GetItemsDonated() < gameManagerRef.donationLimit)
         {
             // Called in GameManager
             //onStartScreenTextComplete?.Invoke(); 

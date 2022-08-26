@@ -43,12 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd867918145044e49bb9bb6f34b0910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 3380267736634916366, guid: a858197aafa9c7043b698712d60665c4, type: 3}
+  itemPrefabs:
+  - {fileID: 8787804578951429843, guid: f6ff6489e4c9f4642ae0461346b46df0, type: 3}
+  - {fileID: 287346980965595167, guid: b9e0e37138d2e9f408edd1a40e0a3e36, type: 3}
+  - {fileID: 1276403562287740881, guid: d1e2cbc749ef1344dbf838dd344304f2, type: 3}
+  - {fileID: 7110227959254169513, guid: fb4516c9aff1e8a4fadc452ef1dee6d4, type: 3}
+  - {fileID: 4442937378881064637, guid: 38975da861a84734e893563df335c76f, type: 3}
+  - {fileID: 8705171276271379659, guid: c3ff6ad17b18a1e49be6344e755ac0b4, type: 3}
+  - {fileID: 2429487182873171945, guid: 19dc0ed5991422947a24cb577876aa98, type: 3}
+  - {fileID: 5242646669778184177, guid: 39a035cfeecb8d045818d2f4ad0db558, type: 3}
   flowerPrefab: {fileID: 3169359788364355400, guid: 481873e581db36f49b2dd7d5520570c9, type: 3}
   flowerPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3169359788364355400, guid: 481873e581db36f49b2dd7d5520570c9, type: 3}
+  - {fileID: 3169359788364355400, guid: af00f3c7816967548947e917bc8d827d, type: 3}
+  - {fileID: 3169359788364355400, guid: df08d68f9043eeb40a665ce801701dea, type: 3}
   donationBox: {fileID: 0}
-  randomSpawnPoint: 0
+  audioSource: {fileID: 0}
+  finalCheerClip: {fileID: 8300000, guid: c0509d5371c98e44a870d64aa9f1f25a, type: 3}
+  flowerPop: {fileID: 8300000, guid: 2b5b0685aa74e4243aae01e7af616400, type: 3}
   gameState: 0
+  itemsDonated: 0
+  randomSpawnPoint: 0

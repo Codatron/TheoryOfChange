@@ -23,10 +23,22 @@ public class GameManager : MonoBehaviour
     public AudioClip finalCheerClip;
     public AudioClip flowerPop;
     public GameState gameState;
+    public int donationLimit = 6;
 
     [SerializeField] private int itemsDonated;
-    private int itemsMultiplier;
+    private float itemsMultiplier;
     [SerializeField] int randomSpawnPoint;
+    [SerializeField] float itemSpawnLimitX;
+    [SerializeField] float itemMinSpawnLimitY;
+    [SerializeField] float itemMaxSpawnLimitY;
+    [SerializeField] float flowerSpawnLimitX;
+    [SerializeField] float flowerMinSpawnLimitY;
+    [SerializeField] float flowerMaxSpawnLimitY;
+
+    private void Awake()
+    {
+        gameState = GameState.GameOn;
+    }
 
     private void OnEnable()
     {
@@ -56,13 +68,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnDelay()
     {
-        yield return new WaitForSeconds(0.667f);
+        yield return new WaitForSeconds(1.5f);
 
         
         if (gameState != GameState.GamePause)
         {
-            var spawnPointLeft = RandomSpawnPosition(-9.0f, -9.0f, 2.75f, 3.10f);
-            var spawnPointRight = RandomSpawnPosition(9.0f, 9.0f, 2.75f, 3.10f);
+            var spawnPointLeft = RandomSpawnPosition(-itemSpawnLimitX, -itemSpawnLimitX, itemMinSpawnLimitY, itemMaxSpawnLimitY);
+            var spawnPointRight = RandomSpawnPosition(itemSpawnLimitX, itemSpawnLimitX, itemMinSpawnLimitY, itemMaxSpawnLimitY);
             randomSpawnPoint = Random.Range(0, 2);
 
             int randomItem = Random.Range(0, itemPrefabs.Length);
@@ -89,15 +101,21 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < itemsMultiplier; i++)
         {
-            var spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.95f, -6.35f);
+            var spawnPosition = RandomSpawnPosition(-flowerSpawnLimitX, flowerSpawnLimitX, flowerMaxSpawnLimitY, flowerMinSpawnLimitY);
             bool canSpawnHere = true;
             var tries = 0;
 
             do
             {
-                spawnPosition = RandomSpawnPosition(-9.5f, 9.5f, 0.95f, -6.35f);
+                spawnPosition = RandomSpawnPosition(-flowerSpawnLimitX, flowerSpawnLimitX, flowerMaxSpawnLimitY, flowerMinSpawnLimitY);
 
-                //canSpawnHere = true;
+                for (int j = 0; j < flowerPrefabs.Length; j++)
+                {
+                    if (flowerPrefabs[j].GetComponent<Collider2D>().bounds.Contains(spawnPosition))
+                    {
+                        canSpawnHere = false;
+                    }
+                }
 
                 if (donationBox.bounds.Contains(spawnPosition))
                 {
@@ -115,7 +133,6 @@ public class GameManager : MonoBehaviour
 
             int randomFlower = Random.Range(0, flowerPrefabs.Length);
             var flowerClone = Instantiate(flowerPrefabs[randomFlower], spawnPosition, Quaternion.identity);
-
         }
 
         float randomPitch = Random.Range(0.7f, 1.0f);
@@ -138,9 +155,14 @@ public class GameManager : MonoBehaviour
 
     void AddItemsDonated()
     {
-        if (itemsMultiplier > 0)
+        if (itemsMultiplier > 4)
         {
-            itemsMultiplier *= 2;
+            itemsMultiplier *= 2f;
+            itemsMultiplier++;
+        }
+        else if (itemsMultiplier > 0)
+        {
+            itemsMultiplier *= 1.5f;
             itemsMultiplier++;
         }
         else
@@ -150,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         itemsDonated++;
 
-        if (itemsDonated == 10)
+        if (itemsDonated > donationLimit)
         {
             gameState = GameState.GamePause;
             onChangeGameState?.Invoke(); // Called in UiManager
@@ -160,7 +182,7 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        gameState = GameState.GameOn;
+        //gameState = GameState.GameOn;
         StartCoroutine(nameof(SpawnDelay));
     }
 }

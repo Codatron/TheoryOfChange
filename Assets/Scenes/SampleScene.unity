@@ -1218,7 +1218,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -5407,8 +5407,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631615098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.33, z: 0}
-  m_LocalScale: {x: 0.4429688, y: 0.46143344, z: 1}
+  m_LocalPosition: {x: 0.079, y: -0.33, z: 0}
+  m_LocalScale: {x: 0.6391201, y: 0.46143344, z: 1}
   m_Children: []
   m_Father: {fileID: 837314476}
   m_RootOrder: 1
@@ -5639,6 +5639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854860333}
+  - component: {fileID: 854860332}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -5646,6 +5647,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &854860332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854860331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04abf54b5d99b945b66abd82abe21b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundAudioSource: {fileID: 1303372759}
+  birdsongAudioSource: {fileID: 415538860}
+  gameManager: {fileID: 876308493}
 --- !u!4 &854860333
 Transform:
   m_ObjectHideFlags: 0
@@ -6071,7 +6087,7 @@ MonoBehaviour:
   m_text: End Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41715e1b71f7c0544b16daeb78c1efa3, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -8928629311702180655, guid: 41715e1b71f7c0544b16daeb78c1efa3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6797,7 +6813,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -12134,10 +12150,6 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: flowerPop
-      value: 
-      objectReference: {fileID: 8300000, guid: 2b5b0685aa74e4243aae01e7af616400, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1728931023}
@@ -12146,56 +12158,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1689279375}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: finalCheerClip
-      value: 
-      objectReference: {fileID: 8300000, guid: c0509d5371c98e44a870d64aa9f1f25a, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.size
-      value: 8
+      propertyPath: donationLimit
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 8787804578951429843, guid: f6ff6489e4c9f4642ae0461346b46df0, type: 3}
+      propertyPath: itemSpawnLimitX
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 287346980965595167, guid: b9e0e37138d2e9f408edd1a40e0a3e36, type: 3}
+      propertyPath: flowerSpawnLimitX
+      value: 8.85
+      objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1276403562287740881, guid: d1e2cbc749ef1344dbf838dd344304f2, type: 3}
+      propertyPath: itemMaxSpawnLimitY
+      value: 3.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 7110227959254169513, guid: fb4516c9aff1e8a4fadc452ef1dee6d4, type: 3}
+      propertyPath: itemMinSpawnLimitY
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4442937378881064637, guid: 38975da861a84734e893563df335c76f, type: 3}
+      propertyPath: flowerMaxSpawnLimitY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 8705171276271379659, guid: c3ff6ad17b18a1e49be6344e755ac0b4, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 2429487182873171945, guid: 19dc0ed5991422947a24cb577876aa98, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: itemPrefabs.Array.data[7]
-      value: 
-      objectReference: {fileID: 5242646669778184177, guid: 39a035cfeecb8d045818d2f4ad0db558, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: flowerPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 3169359788364355400, guid: 481873e581db36f49b2dd7d5520570c9, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: flowerPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 3169359788364355400, guid: af00f3c7816967548947e917bc8d827d, type: 3}
-    - target: {fileID: 5363900063249888519, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}
-      propertyPath: flowerPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 3169359788364355400, guid: df08d68f9043eeb40a665ce801701dea, type: 3}
+      propertyPath: flowerMinSpawnLimitY
+      value: -6.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ec6ec3f8298c6f44b9fc9a2d8c56067, type: 3}

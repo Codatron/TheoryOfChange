@@ -30,25 +30,25 @@ public class ChangeSprite : MonoBehaviour
 
         if (transform.position.y > 0.0f)
         {
-            transform.localScale = ChangeScale(0.40f, 0.40f, 0.0f);
+            transform.localScale = ChangeScale(0.50f, 0.50f, 0.0f);
         }
         else if (transform.position.y > -1.0f)
         {
-            transform.localScale = ChangeScale(0.55f, 0.55f, 0.0f);
+            transform.localScale = ChangeScale(0.6f, 0.6f, 0.0f);
         }
         else if (transform.position.y > -2.0f)
         {
-            transform.localScale = ChangeScale(0.65f, 0.65f, 0.0f);
+            transform.localScale = ChangeScale(0.7f, 0.7f, 0.0f);
         }
         else if (transform.position.y > -3.0f)
         {
-            transform.localScale = ChangeScale(0.70f, 0.70f, 0.0f);
+            transform.localScale = ChangeScale(0.80f, 0.80f, 0.0f);
 
             spriteRend.sortingOrder = -2;
         }
         else if (transform.position.y > -4.0f)
         {
-            transform.localScale = ChangeScale(0.85f, 0.850f, 0.0f);
+            transform.localScale = ChangeScale(0.90f, 0.90f, 0.0f);
 
             spriteRend.sortingOrder = -1;
         }
